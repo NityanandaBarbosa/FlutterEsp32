@@ -10,9 +10,11 @@ environment:
   sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
+  dio: ^3.0.9
+  dartz: ^0.9.1
+  edge_alerts: ^0.0.1
   flutter:
     sdk: flutter
-
   cupertino_icons: ^1.0.2
   flutter_modular: ^3.3.1
   flutter_triple: ^1.2.3+1
