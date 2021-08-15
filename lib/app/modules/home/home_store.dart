@@ -26,13 +26,14 @@ abstract class HomeStoreBase with Store {
 
   @action
   Future tryToConnect() async {
-    failure = none();
+    failure = null;
     final responseConnect = await esp32repository.connectToEsp();
     responseConnect.fold((failureResult) {
       failure = optionOf(failureResult);
       connected = false;
     }, (connect) {
       setEspReturn(connect);
+      failure = None();
       connected = true;
     });
   }

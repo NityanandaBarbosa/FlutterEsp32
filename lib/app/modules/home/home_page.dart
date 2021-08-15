@@ -21,20 +21,27 @@ class _HomePageState extends ModularState<HomePage, HomeStore> {
     super.initState();
     store.tryToConnect();
     reaction((_) => store.failure, (_) {
-      store.failure.map((failure) {
-        String message;
-        if (failure is ConnectionFailure) {
-          message = "Conecte-se ao access point do ESP32!";
-        } else {
-          message = "I don't know!";
-        }
+      String message;
+      store.failure.fold((){
+        message = "Connected to ESP32";
         return edgeAlert(context,
-            title: "Error",
+            title: "Success",
             description: message,
             duration: 2,
-            icon: Icons.error,
+            icon: Icons.check,
             gravity: Gravity.top,
-            backgroundColor: Colors.red);
+            backgroundColor: Colors.green);
+      }, (failure){
+          if (failure is ConnectionFailure) {
+              message = "Connect to the ESP32 access point!";
+              return edgeAlert(context,
+              title: "Error",
+              description: message,
+              duration: 2,
+              icon: Icons.error,
+              gravity: Gravity.top,
+              backgroundColor: Colors.red);
+        }
       });
     });
   }
@@ -46,8 +53,10 @@ class _HomePageState extends ModularState<HomePage, HomeStore> {
         title: Center(child: Text('Flutter ESP32')),
       ),
       body: Observer(
-        builder: (_){
-          return Center(child: Text(store.connected == false ? "Fail" : "${store.espReturn}"));
+        builder: (_) {
+          return Center(
+              child: Text(
+                  store.connected == false ? "Fail" : "${store.espReturn}"));
         },
       ),
       floatingActionButton: FloatingActionButton(
