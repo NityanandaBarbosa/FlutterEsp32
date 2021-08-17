@@ -22,7 +22,7 @@ class _HomePageState extends ModularState<HomePage, HomeStore> {
     store.tryToConnect();
     reaction((_) => store.failure, (_) {
       String message;
-      store.failure.fold((){
+      store.failure.fold(() {
         message = "Connected to ESP32";
         return edgeAlert(context,
             title: "Success",
@@ -31,10 +31,10 @@ class _HomePageState extends ModularState<HomePage, HomeStore> {
             icon: Icons.check,
             gravity: Gravity.top,
             backgroundColor: Colors.green);
-      }, (failure){
-          if (failure is ConnectionFailure) {
-              message = "Connect to the ESP32 access point!";
-              return edgeAlert(context,
+      }, (failure) {
+        if (failure is ConnectionFailure) {
+          message = "Connect to the ESP32 access point!";
+          return edgeAlert(context,
               title: "Error",
               description: message,
               duration: 2,
@@ -63,7 +63,7 @@ class _HomePageState extends ModularState<HomePage, HomeStore> {
         onPressed: () async {
           await store.tryToConnect();
         },
-        child: Icon(Icons.add),
+        child: Icon(Icons.refresh),
       ),
     );
   }
