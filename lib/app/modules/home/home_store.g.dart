@@ -24,6 +24,21 @@ mixin _$HomeStore on HomeStoreBase, Store {
     });
   }
 
+  final _$bottomNavIndexAtom = Atom(name: 'HomeStoreBase.bottomNavIndex');
+
+  @override
+  int get bottomNavIndex {
+    _$bottomNavIndexAtom.reportRead();
+    return super.bottomNavIndex;
+  }
+
+  @override
+  set bottomNavIndex(int value) {
+    _$bottomNavIndexAtom.reportWrite(value, super.bottomNavIndex, () {
+      super.bottomNavIndex = value;
+    });
+  }
+
   final _$connectedAtom = Atom(name: 'HomeStoreBase.connected');
 
   @override
@@ -54,6 +69,21 @@ mixin _$HomeStore on HomeStoreBase, Store {
     });
   }
 
+  final _$highContrastAtom = Atom(name: 'HomeStoreBase.highContrast');
+
+  @override
+  bool get highContrast {
+    _$highContrastAtom.reportRead();
+    return super.highContrast;
+  }
+
+  @override
+  set highContrast(bool value) {
+    _$highContrastAtom.reportWrite(value, super.highContrast, () {
+      super.highContrast = value;
+    });
+  }
+
   final _$tryToConnectAsyncAction = AsyncAction('HomeStoreBase.tryToConnect');
 
   @override
@@ -76,11 +106,35 @@ mixin _$HomeStore on HomeStoreBase, Store {
   }
 
   @override
+  dynamic setBottomNavIndex(int value) {
+    final _$actionInfo = _$HomeStoreBaseActionController.startAction(
+        name: 'HomeStoreBase.setBottomNavIndex');
+    try {
+      return super.setBottomNavIndex(value);
+    } finally {
+      _$HomeStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  dynamic setHighContrast(bool value) {
+    final _$actionInfo = _$HomeStoreBaseActionController.startAction(
+        name: 'HomeStoreBase.setHighContrast');
+    try {
+      return super.setHighContrast(value);
+    } finally {
+      _$HomeStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
 failure: ${failure},
+bottomNavIndex: ${bottomNavIndex},
 connected: ${connected},
-espPinList: ${espPinList}
+espPinList: ${espPinList},
+highContrast: ${highContrast}
     ''';
   }
 }

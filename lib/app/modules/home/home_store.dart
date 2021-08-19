@@ -19,13 +19,25 @@ abstract class HomeStoreBase with Store {
   Option<ConnectionFailure> failure;
 
   @observable
+  int bottomNavIndex = 0;
+
+  @observable
   bool connected = false;
 
   @observable
   List<Pin> espPinList;
 
+  @observable
+  bool highContrast = false;
+
   @action
   setEspReturn(List<Pin> value) => espPinList = value;
+
+  @action
+  setBottomNavIndex(int value) => bottomNavIndex = value;
+
+  @action
+  setHighContrast(bool value) => highContrast = value;
 
   @action
   Future tryToConnect() async {

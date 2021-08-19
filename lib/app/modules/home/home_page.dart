@@ -50,17 +50,150 @@ class _HomePageState extends ModularState<HomePage, HomeStore> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Center(child: Text('Flutter ESP32')),
-      ),
-      body: _wrapOfButtons(),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () async {
-          await store.tryToConnect();
-        },
-        child: Icon(Icons.refresh),
-      ),
+    return Observer(
+      builder: (_) {
+        return Scaffold(
+          appBar: AppBar(
+            title: Center(child: Text('Flutter ESP32')),
+          ),
+          body: store.bottomNavIndex == 0 ? _wrapOfButtons() : _config(),
+          bottomNavigationBar: Observer(builder: (_) {
+            return BottomNavigationBar(
+              showUnselectedLabels: false,
+              backgroundColor: Colors.blue,
+              //ype: BottomNavigationBarType.fixed,
+              items: const <BottomNavigationBarItem>[
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.keyboard_control),
+                  label: 'Main',
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.settings),
+                  label: 'Configs',
+                ),
+              ],
+              currentIndex: store.bottomNavIndex,
+              selectedItemColor: Colors.white,
+              onTap: store.setBottomNavIndex,
+            );
+          }),
+          floatingActionButton: FloatingActionButton(
+            onPressed: () async {
+              await store.tryToConnect();
+            },
+            child: Icon(Icons.refresh),
+          ),
+        );
+      },
+    );
+  }
+
+  Widget _config() {
+    return Observer(
+      builder: (_) {
+        return Scaffold(
+          body: ListView(
+            children: <Widget>[
+              new Column(
+                children: <Widget>[
+                  Padding(
+                    padding: EdgeInsets.only(top: 30.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: <Widget>[
+                        Expanded(
+                          flex: 1,
+                          child: Container(
+                            color: Colors.grey,
+                            height: 1.5,
+                          ),
+                        ),
+                        Expanded(
+                            flex: 2,
+                            child: new Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: <Widget>[
+                                Text(
+                                  'Settings',
+                                  style: new TextStyle(
+                                      fontSize: 30.0,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ],
+                            )),
+                        Expanded(
+                          flex: 1,
+                          child: Container(
+                            color: Colors.grey,
+                            height: 1.5,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+              Padding(
+                padding: EdgeInsets.only(top: 50.0),
+              ),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: <Widget>[
+                  Card(
+                    color: Colors.white,
+                    elevation: 2.0,
+                    child: Column(
+                      children: <Widget>[
+                        ListTile(
+                          leading: Icon(
+                            Icons.verified,
+                            color: Colors.grey,
+                          ),
+                          title: Text("Version"),
+                          trailing: Text("1.0.0"),
+                        ),
+                        ListTile(
+                          //onTap: linkendlin,
+                          leading: Icon(
+                            Icons.brightness_6_outlined,
+                            color: Colors.black,
+                          ),
+                          title: Text("High Contrast"),
+                          trailing: Switch(
+                              value: store.highContrast,
+                              onChanged: store.setHighContrast),
+                        ),
+                        ListTile(
+                          //onTap: _launchURL,
+                          leading: Icon(
+                            Icons.computer_outlined,
+                            color: Colors.black,
+                          ),
+                          title: Text("GitHub"),
+                          trailing: Icon(Icons.arrow_right),
+                        ),
+                        ListTile(
+                          onTap: () {
+                            //SystemNavigator.pop();
+                          },
+                          leading: Icon(
+                            Icons.work_off_outlined,
+                            color: Colors.black,
+                          ),
+                          title: Text("LinkedIn"),
+                          trailing: Icon(Icons.arrow_right),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        );
+      },
     );
   }
 
