@@ -54,13 +54,26 @@ class _HomePageState extends ModularState<HomePage, HomeStore> {
       builder: (_) {
         return Scaffold(
           appBar: AppBar(
-            title: Center(child: Text('Flutter ESP32')),
+            backgroundColor:
+                store.highContrast == false ? Colors.blue : Colors.black,
+            title: Center(
+                child: Text(
+              'Flutter ESP32',
+              style: TextStyle(
+                color: store.highContrast == false
+                    ? Colors.white
+                    : Color(0xFFFFFF00),
+              ),
+            )),
           ),
+          // backgroundColor:
+          //     store.highContrast == true ? Colors.black38 : Colors.white,
           body: store.bottomNavIndex == 0 ? _wrapOfButtons() : _config(),
           bottomNavigationBar: Observer(builder: (_) {
             return BottomNavigationBar(
-              showUnselectedLabels: false,
-              backgroundColor: Colors.blue,
+              showUnselectedLabels: true,
+              backgroundColor:
+                  store.highContrast == false ? Colors.blue : Colors.black,
               //ype: BottomNavigationBarType.fixed,
               items: const <BottomNavigationBarItem>[
                 BottomNavigationBarItem(
@@ -73,15 +86,22 @@ class _HomePageState extends ModularState<HomePage, HomeStore> {
                 ),
               ],
               currentIndex: store.bottomNavIndex,
-              selectedItemColor: Colors.white,
+              selectedItemColor: store.highContrast == false
+                  ? Colors.white
+                  : Color(0xFFFFFF00),
               onTap: store.setBottomNavIndex,
             );
           }),
           floatingActionButton: FloatingActionButton(
+            backgroundColor:
+                store.highContrast == false ? Colors.blue : Color(0xFFFFFF00),
             onPressed: () async {
               await store.tryToConnect();
             },
-            child: Icon(Icons.refresh),
+            child: Icon(
+              Icons.refresh,
+              color: store.highContrast == false ? Colors.white : Colors.black,
+            ),
           ),
         );
       },
@@ -226,7 +246,9 @@ class _HomePageState extends ModularState<HomePage, HomeStore> {
             decoration: BoxDecoration(
               border: Border.all(color: Colors.black54),
               shape: BoxShape.rectangle,
-              color: Colors.white,
+              color: store.highContrast == false
+                  ? Colors.white
+                  : Color(0xFFFFFF00),
               borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(5.0),
                 topRight: Radius.circular(5.0),
@@ -246,15 +268,29 @@ class _HomePageState extends ModularState<HomePage, HomeStore> {
                   ),
                   Padding(
                     padding: const EdgeInsets.all(5.0),
-                    child: Text("G${pin.door}"),
+                    child: Text(
+                      "G${pin.door}",
+                      style: TextStyle(
+                        color: store.highContrast == false
+                            ? Colors.black
+                            : Colors.black87,
+                      ),
+                    ),
                   ),
-                  Text(pin.state == 0 ? "Off" : "On")
+                  Text(
+                    pin.state == 0 ? "Off" : "On",
+                    style: TextStyle(
+                      color: store.highContrast == false
+                          ? Colors.black
+                          : Colors.black87,
+                    ),
+                  )
                 ],
               ),
             ),
           ),
         ),
-        color: Colors.black,
+        color: store.highContrast == false ? Colors.black : Color(0xFFFFFF00),
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(5.0),
           topRight: Radius.circular(5.0),
