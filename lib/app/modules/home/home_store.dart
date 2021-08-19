@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:dartz/dartz.dart';
 import 'package:flutter_esp32/app/modules/home/repository/i_esp32_repository.dart';
 import 'package:flutter_modular/flutter_modular.dart';
@@ -30,6 +32,23 @@ abstract class HomeStoreBase with Store {
     failure = null;
     final responseConnect = await esp32repository.connectToEsp();
     responseConnect.fold((failureResult) {
+      failure = optionOf(failureResult);
+      connected = false;
+    }, (connect) {
+      setEspReturn(connect);
+      failure = None();
+      connected = true;
+    });
+  }
+
+  Future tapButton(Pin pin) async {
+    var response;
+    if (pin.state == 0) {
+      response = await esp32repository.turnOnLed(pin);
+    } else {
+      response = await esp32repository.turnOffLed(pin);
+    }
+    response.fold((failureResult) {
       failure = optionOf(failureResult);
       connected = false;
     }, (connect) {

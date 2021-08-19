@@ -27,7 +27,7 @@ class Esp32Repository implements IEsp32Repository {
   Future<Either<ConnectionFailure, List<Pin>>> turnOffLed(pin) async {
     List<Pin> listOfPins;
     try {
-      var response = await Dio().get("http://192.168.1.1/len_on${pin.door}");
+      var response = await Dio().get("http://192.168.1.1/led_off${pin.door}");
       if (response?.statusCode == 200) {
         listOfPins = generateListOfPin(response.data);
         return right(listOfPins);
@@ -46,7 +46,7 @@ class Esp32Repository implements IEsp32Repository {
   Future<Either<ConnectionFailure, List<Pin>>> turnOnLed(pin) async {
     List<Pin> listOfPins = [];
     try {
-      var response = await Dio().get("http://192.168.1.1/len_off${pin.door}");
+      var response = await Dio().get("http://192.168.1.1/led_on${pin.door}");
       if (response?.statusCode == 200) {
         listOfPins = generateListOfPin(response.data);
         return right(listOfPins);

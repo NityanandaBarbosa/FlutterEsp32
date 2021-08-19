@@ -87,7 +87,7 @@ class _HomePageState extends ModularState<HomePage, HomeStore> {
       padding: const EdgeInsets.all(8.0),
       child: PhysicalModel(
         child: InkWell(
-          onTap: () => print("G${pin.door} / State : ${pin.state}"),
+          onTap: () => store.tapButton(pin),
           child: Container(
             alignment: Alignment.center,
             width: MediaQuery.of(context).size.width * 0.35,
