@@ -24,7 +24,8 @@ class _HomePageState extends ModularState<HomePage, HomeStore> {
       String message;
       store.failure.fold(() {
         message = "Connected to ESP32";
-        return edgeAlert(context,
+
+        edgeAlert(context,
             title: "Success",
             description: message,
             duration: 2,
@@ -34,7 +35,7 @@ class _HomePageState extends ModularState<HomePage, HomeStore> {
       }, (failure) {
         if (failure is ConnectionFailure) {
           message = "Connect to the ESP32 access point!";
-          return edgeAlert(context,
+          edgeAlert(context,
               title: "Error",
               description: message,
               duration: 2,
@@ -55,8 +56,15 @@ class _HomePageState extends ModularState<HomePage, HomeStore> {
       body: Observer(
         builder: (_) {
           return Center(
-              child: Text(
-                  store.connected == false ? "Fail" : "${store.espReturn}"));
+            child: store.connected == false
+                ? Text("Fail")
+                : ListView.builder(
+                    itemCount: store.espPinList.length,
+                    itemBuilder: (context, index) {
+                      return Text(
+                          "${store.espPinList[index].door} ${store.espPinList[index].state} ");
+                    }),
+          );
         },
       ),
       floatingActionButton: FloatingActionButton(

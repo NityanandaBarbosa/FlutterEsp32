@@ -39,18 +39,18 @@ mixin _$HomeStore on HomeStoreBase, Store {
     });
   }
 
-  final _$espReturnAtom = Atom(name: 'HomeStoreBase.espReturn');
+  final _$espPinListAtom = Atom(name: 'HomeStoreBase.espPinList');
 
   @override
-  String get espReturn {
-    _$espReturnAtom.reportRead();
-    return super.espReturn;
+  List<Pin> get espPinList {
+    _$espPinListAtom.reportRead();
+    return super.espPinList;
   }
 
   @override
-  set espReturn(String value) {
-    _$espReturnAtom.reportWrite(value, super.espReturn, () {
-      super.espReturn = value;
+  set espPinList(List<Pin> value) {
+    _$espPinListAtom.reportWrite(value, super.espPinList, () {
+      super.espPinList = value;
     });
   }
 
@@ -65,7 +65,7 @@ mixin _$HomeStore on HomeStoreBase, Store {
       ActionController(name: 'HomeStoreBase');
 
   @override
-  dynamic setEspReturn(String value) {
+  dynamic setEspReturn(List<Pin> value) {
     final _$actionInfo = _$HomeStoreBaseActionController.startAction(
         name: 'HomeStoreBase.setEspReturn');
     try {
@@ -80,7 +80,7 @@ mixin _$HomeStore on HomeStoreBase, Store {
     return '''
 failure: ${failure},
 connected: ${connected},
-espReturn: ${espReturn}
+espPinList: ${espPinList}
     ''';
   }
 }

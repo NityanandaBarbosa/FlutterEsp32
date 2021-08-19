@@ -4,6 +4,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
 
 import 'exceptions/connectionFailure.dart';
+import 'model/pin.dart';
 
 part 'home_store.g.dart';
 
@@ -19,10 +20,10 @@ abstract class HomeStoreBase with Store {
   bool connected = false;
 
   @observable
-  String espReturn;
+  List<Pin> espPinList;
 
   @action
-  setEspReturn(String value) => espReturn = value;
+  setEspReturn(List<Pin> value) => espPinList = value;
 
   @action
   Future tryToConnect() async {

@@ -10,7 +10,8 @@ environment:
   sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
-  dio: ^3.0.9
+  dio:
+  http:
   dartz: ^0.9.1
   edge_alerts: ^0.0.1
   flutter:
