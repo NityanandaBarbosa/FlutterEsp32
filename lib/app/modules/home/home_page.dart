@@ -54,31 +54,28 @@ class _HomePageState extends ModularState<HomePage, HomeStore> {
       appBar: AppBar(
         title: Center(child: Text('Flutter ESP32')),
       ),
-      body: Observer(
-        builder: (_) {
-          return Center(
-            child: store.connected == false
-                ? Text("Fail")
-                : Wrap(
-                    children: store.espPinList
-                        .map((item) => _pinButton(item))
-                        .toList()),
-          );
-          // : ListView.builder(
-          //     itemCount: store.espPinList.length,
-          //     itemBuilder: (context, index) {
-          //       return _pinButton(store.espPinList[index].door);
-          //       //Text("${store.espPinList[index].door} ${store.espPinList[index].state} ");
-          //     }),
-          //);
-        },
-      ),
+      body: _wrapOfButtons(),
       floatingActionButton: FloatingActionButton(
         onPressed: () async {
           await store.tryToConnect();
         },
         child: Icon(Icons.refresh),
       ),
+    );
+  }
+
+  Widget _wrapOfButtons() {
+    return Observer(
+      builder: (_) {
+        return Center(
+          child: store.connected == false
+              ? Text("Fail")
+              : Wrap(
+                  children: store.espPinList
+                      .map((item) => _pinButton(item))
+                      .toList()),
+        );
+      },
     );
   }
 
