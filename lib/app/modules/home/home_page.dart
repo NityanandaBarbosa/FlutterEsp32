@@ -86,38 +86,41 @@ class _HomePageState extends ModularState<HomePage, HomeStore> {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: PhysicalModel(
-        child: Container(
-          alignment: Alignment.center,
-          width: MediaQuery.of(context).size.width * 0.35,
-          height: MediaQuery.of(context).size.height * 0.25,
-          padding: const EdgeInsets.all(25.0),
-          decoration: BoxDecoration(
-            border: Border.all(color: Colors.black54),
-            shape: BoxShape.rectangle,
-            color: Colors.white,
-            borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(5.0),
-              topRight: Radius.circular(5.0),
-              bottomLeft: Radius.circular(5.0),
-              bottomRight: Radius.circular(5.0),
+        child: InkWell(
+          onTap: () => print("G${pin.door} / State : ${pin.state}"),
+          child: Container(
+            alignment: Alignment.center,
+            width: MediaQuery.of(context).size.width * 0.35,
+            height: MediaQuery.of(context).size.height * 0.25,
+            padding: const EdgeInsets.all(25.0),
+            decoration: BoxDecoration(
+              border: Border.all(color: Colors.black54),
+              shape: BoxShape.rectangle,
+              color: Colors.white,
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(5.0),
+                topRight: Radius.circular(5.0),
+                bottomLeft: Radius.circular(5.0),
+                bottomRight: Radius.circular(5.0),
+              ),
             ),
-          ),
-          child: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Icon(pin.state == 1
-                      ? Icons.power_settings_new
-                      : Icons.power_off_sharp),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(5.0),
-                  child: Text("G${pin.door}"),
-                ),
-                Text(pin.state == 0 ? "Off" : "On")
-              ],
+            child: Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Icon(pin.state == 1
+                        ? Icons.power_settings_new
+                        : Icons.power_off_sharp),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(5.0),
+                    child: Text("G${pin.door}"),
+                  ),
+                  Text(pin.state == 0 ? "Off" : "On")
+                ],
+              ),
             ),
           ),
         ),
@@ -128,7 +131,7 @@ class _HomePageState extends ModularState<HomePage, HomeStore> {
           bottomLeft: Radius.circular(5.0),
           bottomRight: Radius.circular(5.0),
         ),
-        shadowColor: Colors.black87,
+        shadowColor: Colors.black,
         elevation: 15,
         //shape: BoxSh,
       ),
