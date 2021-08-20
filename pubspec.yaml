@@ -12,6 +12,7 @@ environment:
 dependencies:
   dio:
   http:
+  url_launcher:
   dartz: ^0.9.1
   edge_alerts: ^0.0.1
   flutter:

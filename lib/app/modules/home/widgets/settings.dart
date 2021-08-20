@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 
 Widget settings(store) {
@@ -111,7 +112,9 @@ Widget settings(store) {
                       ),
                     ),
                     ListTile(
-                      //onTap: _launchURL,
+                      onTap: () async {
+                        await launch("https://github.com/NityanandaBarbosa");
+                      },
                       leading: Icon(
                         Icons.computer_outlined,
                         color: store.highContrast == false
@@ -132,8 +135,9 @@ Widget settings(store) {
                               : Color(0xFFFFFF00)),
                     ),
                     ListTile(
-                      onTap: () {
-                        //SystemNavigator.pop();
+                      onTap: () async {
+                        await launch(
+                            "https://www.linkedin.com/in/nityananda-barbosa-45a5a018b/");
                       },
                       leading: Icon(
                         Icons.work_off_outlined,
