@@ -1,6 +1,7 @@
 import 'package:edge_alerts/edge_alerts.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_esp32/app/modules/home/exceptions/connectionFailure.dart';
+import 'package:flutter_esp32/app/modules/home/widgets/bottomNavigator.dart';
 import 'package:flutter_esp32/app/modules/home/widgets/pinButton.dart';
 import 'package:flutter_esp32/app/modules/home/widgets/settings.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
@@ -57,14 +58,11 @@ class _HomePageState extends ModularState<HomePage, HomeStore> {
         return Scaffold(
           appBar: AppBar(
             backgroundColor:
-                store.highContrast == false ? Colors.blue : Colors.black87,
+                store.highContrast == false ? Colors.blue : Color(0xFF333333),
             title: Center(
                 child: Text(
               'Flutter ESP32',
-              style: TextStyle(color: Color(0xFFFFFFFF)
-                  // ? Colors.white
-                  // : Color(0xFFFFFF00),
-                  ),
+              style: TextStyle(color: Color(0xFFFFFFFF)),
             )),
           ),
           body: Container(
@@ -77,29 +75,7 @@ class _HomePageState extends ModularState<HomePage, HomeStore> {
                 ? _wrapOfButtons()
                 : settings(store)),
           ),
-          bottomNavigationBar: Observer(builder: (_) {
-            return BottomNavigationBar(
-              showUnselectedLabels: true,
-              backgroundColor:
-                  store.highContrast == false ? Colors.blue : Colors.black87,
-              //ype: BottomNavigationBarType.fixed,
-              items: const <BottomNavigationBarItem>[
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.keyboard_control),
-                  label: 'Main',
-                ),
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.settings),
-                  label: 'Settings',
-                ),
-              ],
-              currentIndex: store.bottomNavIndex,
-              selectedItemColor: store.highContrast == false
-                  ? Color(0xFFFFFF00)
-                  : Colors.white,
-              onTap: store.setBottomNavIndex,
-            );
-          }),
+          bottomNavigationBar: btnNavigator(store),
           floatingActionButton: FloatingActionButton(
             backgroundColor:
                 store.highContrast == false ? Colors.blue : Color(0xFFFFFF00),

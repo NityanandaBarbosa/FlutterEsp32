@@ -4,7 +4,7 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 Widget settings(store) {
   return Observer(
     builder: (_) {
-      return ListView(
+      return Column(
         children: <Widget>[
           new Column(
             children: <Widget>[
@@ -57,37 +57,79 @@ Widget settings(store) {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
               Card(
-                color: Colors.white,
+                color: store.highContrast == false
+                    ? Colors.white
+                    : Color(0xFF333333),
                 elevation: 2.0,
                 child: Column(
                   children: <Widget>[
                     ListTile(
                       leading: Icon(
                         Icons.verified,
-                        color: Colors.grey,
+                        color: store.highContrast == false
+                            ? Colors.black
+                            : Colors.white,
                       ),
-                      title: Text("Version"),
-                      trailing: Text("1.0.0"),
+                      title: Text(
+                        "Version",
+                        style: TextStyle(
+                          color: store.highContrast == false
+                              ? Colors.black
+                              : Colors.white,
+                        ),
+                      ),
+                      trailing: Text(
+                        "1.0.0",
+                        style: TextStyle(
+                          color: store.highContrast == false
+                              ? Colors.black
+                              : Colors.white,
+                        ),
+                      ),
                     ),
                     ListTile(
                       //onTap: linkendlin,
-                      leading: Icon(
-                        Icons.brightness_6_outlined,
-                        color: Colors.black,
+                      leading: Icon(Icons.brightness_6_outlined,
+                          color: store.highContrast == false
+                              ? Colors.black
+                              : Colors.white),
+                      title: Text(
+                        "High Contrast",
+                        style: TextStyle(
+                          color: store.highContrast == false
+                              ? Colors.black
+                              : Colors.white,
+                        ),
                       ),
-                      title: Text("High Contrast"),
                       trailing: Switch(
-                          value: store.highContrast,
-                          onChanged: store.setHighContrast),
+                        value: store.highContrast,
+                        onChanged: store.setHighContrast,
+                        activeColor: store.highContrast == false
+                            ? Colors.blue
+                            : Color(0xFFFFFF00),
+                        //activeTrackColor: Color(0xFFFFFF00),
+                      ),
                     ),
                     ListTile(
                       //onTap: _launchURL,
                       leading: Icon(
                         Icons.computer_outlined,
-                        color: Colors.black,
+                        color: store.highContrast == false
+                            ? Colors.black
+                            : Color(0xFFFFFF00),
                       ),
-                      title: Text("GitHub"),
-                      trailing: Icon(Icons.arrow_right),
+                      title: Text(
+                        "GitHub",
+                        style: TextStyle(
+                          color: store.highContrast == false
+                              ? Colors.black
+                              : Color(0xFFFFFF00),
+                        ),
+                      ),
+                      trailing: Icon(Icons.arrow_right,
+                          color: store.highContrast == false
+                              ? Colors.black
+                              : Color(0xFFFFFF00)),
                     ),
                     ListTile(
                       onTap: () {
@@ -95,10 +137,22 @@ Widget settings(store) {
                       },
                       leading: Icon(
                         Icons.work_off_outlined,
-                        color: Colors.black,
+                        color: store.highContrast == false
+                            ? Colors.black
+                            : Color(0xFFFFFF00),
                       ),
-                      title: Text("LinkedIn"),
-                      trailing: Icon(Icons.arrow_right),
+                      title: Text(
+                        "LinkedIn",
+                        style: TextStyle(
+                          color: store.highContrast == false
+                              ? Colors.black
+                              : Color(0xFFFFFF00),
+                        ),
+                      ),
+                      trailing: Icon(Icons.arrow_right,
+                          color: store.highContrast == false
+                              ? Colors.black
+                              : Color(0xFFFFFF00)),
                     ),
                   ],
                 ),
