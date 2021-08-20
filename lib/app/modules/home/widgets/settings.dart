@@ -140,7 +140,7 @@ Widget settings(store) {
                             "https://www.linkedin.com/in/nityananda-barbosa-45a5a018b/");
                       },
                       leading: Icon(
-                        Icons.work_off_outlined,
+                        Icons.work_outline_outlined,
                         color: store.highContrast == false
                             ? Colors.black
                             : Color(0xFFFFFF00),

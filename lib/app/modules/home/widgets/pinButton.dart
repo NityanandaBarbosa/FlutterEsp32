@@ -29,29 +29,32 @@ Widget pinButton(Pin pin, ctx, store) {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Icon(pin.state == 1
-                      ? Icons.power_settings_new
-                      : Icons.power_off_sharp),
+                  padding: const EdgeInsets.fromLTRB(0, 0, 0, 30),
+                  child: Icon(
+                    pin.state == 1
+                        ? Icons.power_settings_new
+                        : Icons.power_off_sharp,
+                    size: 40,
+                  ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.all(5.0),
+                  padding: const EdgeInsets.fromLTRB(0, 0, 0, 8),
                   child: Text(
                     "G${pin.door}",
                     style: TextStyle(
-                      color: store.highContrast == false
-                          ? Colors.black
-                          : Colors.black87,
-                    ),
+                        color: store.highContrast == false
+                            ? Colors.black
+                            : Colors.black87,
+                        fontSize: 20),
                   ),
                 ),
                 Text(
                   pin.state == 0 ? "Off" : "On",
                   style: TextStyle(
-                    color: store.highContrast == false
-                        ? Colors.black
-                        : Colors.black87,
-                  ),
+                      color: store.highContrast == false
+                          ? Colors.black
+                          : Colors.black87,
+                      fontSize: 18),
                 )
               ],
             ),
