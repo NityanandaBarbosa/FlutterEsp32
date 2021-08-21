@@ -6,6 +6,8 @@ Widget btnNavigator(store) {
     return BottomNavigationBar(
       showUnselectedLabels: false,
       selectedItemColor: Colors.white,
+      selectedFontSize:
+          store.fontSizeSelect <= 1 ? 14 : 14 + 2.0 * store.fontSizeSelect,
       unselectedItemColor:
           store.highContrast == false ? Colors.white : Color(0xFFFFFF00),
       backgroundColor:

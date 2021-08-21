@@ -62,7 +62,11 @@ class _HomePageState extends ModularState<HomePage, HomeStore> {
             title: Center(
                 child: Text(
               'Flutter ESP32',
-              style: TextStyle(color: Color(0xFFFFFFFF)),
+              style: TextStyle(
+                  fontSize: store.fontSizeSelect <= 1
+                      ? 23
+                      : 23 + 2.0 * store.fontSizeSelect,
+                  color: Color(0xFFFFFFFF)),
             )),
           ),
           body: Container(
@@ -73,7 +77,7 @@ class _HomePageState extends ModularState<HomePage, HomeStore> {
             ),
             child: (store.bottomNavIndex == 0
                 ? _wrapOfButtons()
-                : settings(store)),
+                : settings(store, context)),
           ),
           bottomNavigationBar: btnNavigator(store),
           floatingActionButton: FloatingActionButton(
@@ -84,6 +88,9 @@ class _HomePageState extends ModularState<HomePage, HomeStore> {
             },
             child: Icon(
               Icons.refresh,
+              size: store.fontSizeSelect <= 1
+                  ? 25
+                  : 25 + 2.0 * store.fontSizeSelect,
               color:
                   store.highContrast == false ? Colors.white : Colors.black87,
             ),
