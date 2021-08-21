@@ -112,6 +112,54 @@ Widget settings(store) {
                       ),
                     ),
                     ListTile(
+                        //onTap: linkendlin,
+                        leading: Icon(Icons.stacked_line_chart_rounded,
+                            color: store.highContrast == false
+                                ? Colors.black
+                                : Colors.white),
+                        title: Text(
+                          "Font Switch",
+                          style: TextStyle(
+                            color: store.highContrast == false
+                                ? Colors.black
+                                : Colors.white,
+                          ),
+                        ),
+                        trailing: Padding(
+                          padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+                          child: SizedBox(
+                            width: 100,
+                            child: Slider(
+                              value: store.fontSizeSelect,
+                              min: 1,
+                              max: 5,
+                              divisions: 5,
+                              //label: "${store.fontSizeSelect}",
+                              activeColor: store.highContrast == false
+                                  ? Colors.blue
+                                  : Color(0xFFFFFF00),
+                              onChanged: (value) =>
+                                  store.setFontSizeSelect(value),
+                            ),
+                          ),
+                        )
+                        // Wrap(
+                        //   children: [
+                        //     IconButton(
+                        //         icon: Icon(Icons.plus_one),
+                        //         onPressed: () => store
+                        //             .setFontSizeSelect(store.fontSizeSelect - 1)),
+                        //     IconButton(
+                        //         icon: Icon(Icons.plus_one),
+                        //         onPressed: () => {
+                        //               store.setFontSizeSelect(
+                        //                   store.fontSizeSelect + 1),
+                        //               print("AQUIUIII ${store.fontSizeSelect}")
+                        //             }),
+                        //   ],
+                        // ),
+                        ),
+                    ListTile(
                       onTap: () async {
                         await launch("https://github.com/NityanandaBarbosa");
                       },

@@ -98,7 +98,42 @@ class _HomePageState extends ModularState<HomePage, HomeStore> {
       builder: (_) {
         return Center(
           child: store.connected == false
-              ? Text("Fail")
+              ? SizedBox(
+                  width: 200,
+                  height: 100,
+                  child: PhysicalModel(
+                    child: Card(
+                      color: store.highContrast == false
+                          ? Colors.white
+                          : Color(0xFF333333),
+                      child: Center(
+                        child: Text(
+                          "Fail",
+                          style: TextStyle(
+                              color: store.highContrast == false
+                                  ? Colors.black
+                                  : Colors.white,
+                              fontSize: store.fontSizeSelect <= 1
+                                  ? 20
+                                  : 20 + 2.0 * store.fontSizeSelect),
+                        ),
+                      ),
+                    ),
+                    color: store.highContrast == false
+                        ? Colors.black12
+                        : Color(0xFFFFFF00),
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(5.0),
+                      topRight: Radius.circular(5.0),
+                      bottomLeft: Radius.circular(5.0),
+                      bottomRight: Radius.circular(5.0),
+                    ),
+                    shadowColor: store.highContrast == false
+                        ? Colors.black87
+                        : Color(0xFFFFFF00),
+                    elevation: 25,
+                  ),
+                )
               : Wrap(
                   children: store.espPinList
                       .map((item) => pinButton(item, context, store))

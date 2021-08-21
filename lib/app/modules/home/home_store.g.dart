@@ -69,6 +69,21 @@ mixin _$HomeStore on HomeStoreBase, Store {
     });
   }
 
+  final _$fontSizeSelectAtom = Atom(name: 'HomeStoreBase.fontSizeSelect');
+
+  @override
+  double get fontSizeSelect {
+    _$fontSizeSelectAtom.reportRead();
+    return super.fontSizeSelect;
+  }
+
+  @override
+  set fontSizeSelect(double value) {
+    _$fontSizeSelectAtom.reportWrite(value, super.fontSizeSelect, () {
+      super.fontSizeSelect = value;
+    });
+  }
+
   final _$highContrastAtom = Atom(name: 'HomeStoreBase.highContrast');
 
   @override
@@ -117,6 +132,17 @@ mixin _$HomeStore on HomeStoreBase, Store {
   }
 
   @override
+  dynamic setFontSizeSelect(double value) {
+    final _$actionInfo = _$HomeStoreBaseActionController.startAction(
+        name: 'HomeStoreBase.setFontSizeSelect');
+    try {
+      return super.setFontSizeSelect(value);
+    } finally {
+      _$HomeStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   dynamic setHighContrast(bool value) {
     final _$actionInfo = _$HomeStoreBaseActionController.startAction(
         name: 'HomeStoreBase.setHighContrast');
@@ -134,6 +160,7 @@ failure: ${failure},
 bottomNavIndex: ${bottomNavIndex},
 connected: ${connected},
 espPinList: ${espPinList},
+fontSizeSelect: ${fontSizeSelect},
 highContrast: ${highContrast}
     ''';
   }

@@ -28,6 +28,9 @@ abstract class HomeStoreBase with Store {
   List<Pin> espPinList;
 
   @observable
+  double fontSizeSelect = 1.0;
+
+  @observable
   bool highContrast = false;
 
   @action
@@ -35,6 +38,9 @@ abstract class HomeStoreBase with Store {
 
   @action
   setBottomNavIndex(int value) => bottomNavIndex = value;
+
+  @action
+  setFontSizeSelect(double value) => fontSizeSelect = value;
 
   @action
   setHighContrast(bool value) => highContrast = value;

@@ -34,7 +34,9 @@ Widget pinButton(Pin pin, ctx, store) {
                     pin.state == 1
                         ? Icons.power_settings_new
                         : Icons.power_off_sharp,
-                    size: 40,
+                    size: store.fontSizeSelect <= 1
+                        ? 40
+                        : 40 + 2.0 * store.fontSizeSelect,
                   ),
                 ),
                 Padding(
@@ -45,7 +47,9 @@ Widget pinButton(Pin pin, ctx, store) {
                         color: store.highContrast == false
                             ? Colors.black
                             : Colors.black87,
-                        fontSize: 20),
+                        fontSize: store.fontSizeSelect <= 1
+                            ? 20
+                            : 20 + 2.0 * store.fontSizeSelect),
                   ),
                 ),
                 Text(
@@ -54,7 +58,9 @@ Widget pinButton(Pin pin, ctx, store) {
                       color: store.highContrast == false
                           ? Colors.black
                           : Colors.black87,
-                      fontSize: 18),
+                      fontSize: store.fontSizeSelect <= 1
+                          ? 18
+                          : 18 + 2.0 * store.fontSizeSelect),
                 )
               ],
             ),
