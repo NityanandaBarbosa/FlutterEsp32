@@ -15,21 +15,28 @@ class _FontSliderState extends State<FontSlider> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor:
-            _homeStore.highContrast == false ? Colors.blue : Color(0xFF333333),
-        title: Text('Font Slider'),
-      ),
-      body: Container(
-        width: MediaQuery.of(context).size.width,
-        decoration: BoxDecoration(
-          color: _homeStore.highContrast == false
-              ? Colors.white
-              : Color(0xFF000000),
+    return Observer(
+      builder: (_) => Scaffold(
+        appBar: AppBar(
+          backgroundColor: _homeStore.highContrast == false
+              ? Colors.blue
+              : Color(0xFF333333),
+          title: Text(
+            'Font Slider',
+            style: TextStyle(
+              fontSize: 20 + 2.0 * _homeStore.fontSizeSelect,
+              color: Colors.white,
+            ),
+          ),
         ),
-        child: Observer(builder: (_) {
-          return Padding(
+        body: Container(
+          width: MediaQuery.of(context).size.width,
+          decoration: BoxDecoration(
+            color: _homeStore.highContrast == false
+                ? Colors.white
+                : Color(0xFF000000),
+          ),
+          child: Padding(
             padding: const EdgeInsets.fromLTRB(0, 25, 0, 0),
             child: Center(
               child: Column(
@@ -47,11 +54,12 @@ class _FontSliderState extends State<FontSlider> {
                         children: [
                           Padding(
                             padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
-                            child: Icon(
-                              Icons.remove,
-                              color: _homeStore.highContrast == false
-                                  ? Colors.black
-                                  : Colors.white,
+                            child: Text(
+                              "A",
+                              style: TextStyle(
+                                fontSize: 15,
+                                color: Colors.white,
+                              ),
                             ),
                           ),
                           Container(
@@ -59,16 +67,17 @@ class _FontSliderState extends State<FontSlider> {
                             //height: MediaQuery.of(context).size.height * 0.05,
                             child: SliderTheme(
                               data: SliderThemeData(
-                                trackHeight: 1.0,
-                                thumbShape: RoundSliderThumbShape(
-                                    enabledThumbRadius: 10.0),
+                                trackHeight: 2,
+                                overlayColor: _homeStore.highContrast == false
+                                    ? Colors.blue.withOpacity(.1)
+                                    : Color(0xFFFFFF00).withOpacity(.1),
                                 thumbColor: _homeStore.highContrast == false
                                     ? Colors.blue
                                     : Color(0xFFFFFF00),
-                                activeTrackColor:
-                                    _homeStore.highContrast == false
-                                        ? Colors.blue
-                                        : Color(0xFFFFFF00).withOpacity(0.3),
+                                activeTrackColor: Colors.grey,
+                                inactiveTrackColor: Colors.grey,
+                                activeTickMarkColor: Colors.grey,
+                                inactiveTickMarkColor: Colors.grey,
                               ),
                               child: Slider(
                                 value: _homeStore.fontSizeSelect,
@@ -82,11 +91,12 @@ class _FontSliderState extends State<FontSlider> {
                           ),
                           Padding(
                             padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
-                            child: Icon(
-                              Icons.add,
-                              color: _homeStore.highContrast == false
-                                  ? Colors.black
-                                  : Colors.white,
+                            child: Text(
+                              "A",
+                              style: TextStyle(
+                                fontSize: 20,
+                                color: Colors.white,
+                              ),
                             ),
                           ),
                         ],
@@ -141,8 +151,8 @@ class _FontSliderState extends State<FontSlider> {
                 ],
               ),
             ),
-          );
-        }),
+          ),
+        ),
       ),
     );
   }
