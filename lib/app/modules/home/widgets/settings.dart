@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 
@@ -129,61 +130,67 @@ Widget settings(store, ctx) {
                       ),
                     ),
                     ListTile(
-                        //onTap: linkendlin,
-                        leading: Icon(Icons.stacked_line_chart_rounded,
-                            size: store.fontSizeSelect <= 1
-                                ? 25
-                                : 25 + 2.0 * store.fontSizeSelect,
-                            color: store.highContrast == false
-                                ? Colors.black
-                                : Colors.white),
-                        title: Text(
-                          "Font Slider",
-                          style: TextStyle(
+                      onTap: () => {Modular.to.pushNamed("/font_slider")},
+                      leading: Icon(Icons.stacked_line_chart_rounded,
+                          size: store.fontSizeSelect <= 1
+                              ? 25
+                              : 25 + 2.0 * store.fontSizeSelect,
+                          color: store.highContrast == false
+                              ? Colors.black
+                              : Color(0xFFFFFF00)),
+                      title: Text(
+                        "Font Slider",
+                        style: TextStyle(
                             fontSize: store.fontSizeSelect <= 1
                                 ? 15
                                 : 15 + 2.0 * store.fontSizeSelect,
                             color: store.highContrast == false
                                 ? Colors.black
-                                : Colors.white,
-                          ),
-                        ),
-                        trailing: Padding(
-                          padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
-                          child: SizedBox(
-                            width: store.fontSizeSelect <= 1
-                                ? 100
-                                : 100 + 2.0 * store.fontSizeSelect,
-                            child: Slider(
-                              value: store.fontSizeSelect,
-                              min: 1,
-                              max: 5,
-                              divisions: 5,
-                              //label: "${store.fontSizeSelect}",
-                              activeColor: store.highContrast == false
-                                  ? Colors.blue
-                                  : Color(0xFFFFFF00),
-                              onChanged: (value) =>
-                                  store.setFontSizeSelect(value),
-                            ),
-                          ),
-                        )
-                        // Wrap(
-                        //   children: [
-                        //     IconButton(
-                        //         icon: Icon(Icons.plus_one),
-                        //         onPressed: () => store
-                        //             .setFontSizeSelect(store.fontSizeSelect - 1)),
-                        //     IconButton(
-                        //         icon: Icon(Icons.plus_one),
-                        //         onPressed: () => {
-                        //               store.setFontSizeSelect(
-                        //                   store.fontSizeSelect + 1),
-                        //               print("AQUIUIII ${store.fontSizeSelect}")
-                        //             }),
-                        //   ],
-                        // ),
-                        ),
+                                : Color(0xFFFFFF00)),
+                      ),
+                      trailing: Icon(Icons.arrow_right,
+                          size: store.fontSizeSelect <= 1
+                              ? 25
+                              : 25 + 2.0 * store.fontSizeSelect,
+                          color: store.highContrast == false
+                              ? Colors.black
+                              : Color(0xFFFFFF00)),
+                      // Padding(
+                      //   padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+                      //   child: SizedBox(
+                      //     width: store.fontSizeSelect <= 1
+                      //         ? 100
+                      //         : 100 + 2.0 * store.fontSizeSelect,
+                      //     child: Slider(
+                      //       value: store.fontSizeSelect,
+                      //       min: 1,
+                      //       max: 5,
+                      //       divisions: 5,
+                      //       //label: "${store.fontSizeSelect}",
+                      //       activeColor: store.highContrast == false
+                      //           ? Colors.blue
+                      //           : Color(0xFFFFFF00),
+                      //       onChanged: (value) =>
+                      //           store.setFontSizeSelect(value),
+                      //     ),
+                      //   ),
+                      // )
+                      // Wrap(
+                      //   children: [
+                      //     IconButton(
+                      //         icon: Icon(Icons.plus_one),
+                      //         onPressed: () => store
+                      //             .setFontSizeSelect(store.fontSizeSelect - 1)),
+                      //     IconButton(
+                      //         icon: Icon(Icons.plus_one),
+                      //         onPressed: () => {
+                      //               store.setFontSizeSelect(
+                      //                   store.fontSizeSelect + 1),
+                      //               print("AQUIUIII ${store.fontSizeSelect}")
+                      //             }),
+                      //   ],
+                      // ),
+                    ),
                     ListTile(
                       onTap: () async {
                         await launch("https://github.com/NityanandaBarbosa");
