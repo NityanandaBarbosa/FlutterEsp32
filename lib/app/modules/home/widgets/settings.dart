@@ -31,9 +31,7 @@ Widget settings(store, ctx) {
                             Text(
                               'Settings',
                               style: new TextStyle(
-                                  fontSize: store.fontSizeSelect <= 1
-                                      ? 30
-                                      : 30 + 2.0 * store.fontSizeSelect,
+                                  fontSize: 30 + 2.0 * store.fontSizeSelect,
                                   fontWeight: FontWeight.bold,
                                   color: store.highContrast == false
                                       ? Colors.black
@@ -70,9 +68,7 @@ Widget settings(store, ctx) {
                     ListTile(
                       leading: Icon(
                         Icons.verified,
-                        size: store.fontSizeSelect <= 1
-                            ? 25
-                            : 25 + 2.0 * store.fontSizeSelect,
+                        size: 25,
                         color: store.highContrast == false
                             ? Colors.black
                             : Colors.white,
@@ -80,9 +76,7 @@ Widget settings(store, ctx) {
                       title: Text(
                         "Version",
                         style: TextStyle(
-                          fontSize: store.fontSizeSelect <= 1
-                              ? 15
-                              : 15 + 2.0 * store.fontSizeSelect,
+                          fontSize: 15 + 2.0 * store.fontSizeSelect,
                           color: store.highContrast == false
                               ? Colors.black
                               : Colors.white,
@@ -91,9 +85,7 @@ Widget settings(store, ctx) {
                       trailing: Text(
                         "1.0.0",
                         style: TextStyle(
-                          fontSize: store.fontSizeSelect <= 1
-                              ? 15
-                              : 15 + 2.0 * store.fontSizeSelect,
+                          fontSize: 15 + 2.0 * store.fontSizeSelect,
                           color: store.highContrast == false
                               ? Colors.black
                               : Colors.white,
@@ -103,18 +95,14 @@ Widget settings(store, ctx) {
                     ListTile(
                       //onTap: linkendlin,
                       leading: Icon(Icons.brightness_6_outlined,
-                          size: store.fontSizeSelect <= 1
-                              ? 25
-                              : 25 + 2.0 * store.fontSizeSelect,
+                          size: 25,
                           color: store.highContrast == false
                               ? Colors.black
                               : Colors.white),
                       title: Text(
                         "High Contrast",
                         style: TextStyle(
-                          fontSize: store.fontSizeSelect <= 1
-                              ? 15
-                              : 15 + 2.0 * store.fontSizeSelect,
+                          fontSize: 15 + 2.0 * store.fontSizeSelect,
                           color: store.highContrast == false
                               ? Colors.black
                               : Colors.white,
@@ -132,26 +120,20 @@ Widget settings(store, ctx) {
                     ListTile(
                       onTap: () => {Modular.to.pushNamed("/font_slider")},
                       leading: Icon(Icons.stacked_line_chart_rounded,
-                          size: store.fontSizeSelect <= 1
-                              ? 25
-                              : 25 + 2.0 * store.fontSizeSelect,
+                          size: 25,
                           color: store.highContrast == false
                               ? Colors.black
                               : Color(0xFFFFFF00)),
                       title: Text(
                         "Font Slider",
                         style: TextStyle(
-                            fontSize: store.fontSizeSelect <= 1
-                                ? 15
-                                : 15 + 2.0 * store.fontSizeSelect,
+                            fontSize: 15 + 2.0 * store.fontSizeSelect,
                             color: store.highContrast == false
                                 ? Colors.black
                                 : Color(0xFFFFFF00)),
                       ),
                       trailing: Icon(Icons.arrow_right,
-                          size: store.fontSizeSelect <= 1
-                              ? 25
-                              : 25 + 2.0 * store.fontSizeSelect,
+                          size: 25,
                           color: store.highContrast == false
                               ? Colors.black
                               : Color(0xFFFFFF00)),
@@ -197,9 +179,7 @@ Widget settings(store, ctx) {
                       },
                       leading: Icon(
                         Icons.computer_outlined,
-                        size: store.fontSizeSelect <= 1
-                            ? 25
-                            : 25 + 2.0 * store.fontSizeSelect,
+                        size: 25,
                         color: store.highContrast == false
                             ? Colors.black
                             : Color(0xFFFFFF00),
@@ -207,18 +187,14 @@ Widget settings(store, ctx) {
                       title: Text(
                         "GitHub",
                         style: TextStyle(
-                          fontSize: store.fontSizeSelect <= 1
-                              ? 15
-                              : 15 + 2.0 * store.fontSizeSelect,
+                          fontSize: 15 + 2.0 * store.fontSizeSelect,
                           color: store.highContrast == false
                               ? Colors.black
                               : Color(0xFFFFFF00),
                         ),
                       ),
                       trailing: Icon(Icons.arrow_right,
-                          size: store.fontSizeSelect <= 1
-                              ? 25
-                              : 25 + 2.0 * store.fontSizeSelect,
+                          size: 25,
                           color: store.highContrast == false
                               ? Colors.black
                               : Color(0xFFFFFF00)),
@@ -230,9 +206,7 @@ Widget settings(store, ctx) {
                       },
                       leading: Icon(
                         Icons.work_outline_outlined,
-                        size: store.fontSizeSelect <= 1
-                            ? 25
-                            : 25 + 2.0 * store.fontSizeSelect,
+                        size: 25,
                         color: store.highContrast == false
                             ? Colors.black
                             : Color(0xFFFFFF00),
@@ -240,18 +214,14 @@ Widget settings(store, ctx) {
                       title: Text(
                         "LinkedIn",
                         style: TextStyle(
-                          fontSize: store.fontSizeSelect <= 1
-                              ? 15
-                              : 15 + 2.0 * store.fontSizeSelect,
+                          fontSize: 15 + 2.0 * store.fontSizeSelect,
                           color: store.highContrast == false
                               ? Colors.black
                               : Color(0xFFFFFF00),
                         ),
                       ),
                       trailing: Icon(Icons.arrow_right,
-                          size: store.fontSizeSelect <= 1
-                              ? 25
-                              : 25 + 2.0 * store.fontSizeSelect,
+                          size: 25,
                           color: store.highContrast == false
                               ? Colors.black
                               : Color(0xFFFFFF00)),

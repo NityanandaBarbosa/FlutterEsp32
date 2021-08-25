@@ -34,9 +34,7 @@ Widget pinButton(Pin pin, ctx, store) {
                     pin.state == 1
                         ? Icons.power_settings_new
                         : Icons.power_off_sharp,
-                    size: store.fontSizeSelect <= 1
-                        ? 32
-                        : 32 + 2.0 * store.fontSizeSelect,
+                    size: 40,
                   ),
                 ),
                 Padding(
@@ -46,12 +44,11 @@ Widget pinButton(Pin pin, ctx, store) {
                       "G${pin.door}",
                       overflow: TextOverflow.ellipsis,
                       style: TextStyle(
-                          color: store.highContrast == false
-                              ? Colors.black
-                              : Colors.black87,
-                          fontSize: store.fontSizeSelect <= 1
-                              ? 15
-                              : 15 + 2.0 * store.fontSizeSelect),
+                        color: store.highContrast == false
+                            ? Colors.black
+                            : Colors.black87,
+                        fontSize: 15 + 2.0 * store.fontSizeSelect,
+                      ),
                     ),
                   ),
                 ),
@@ -60,12 +57,11 @@ Widget pinButton(Pin pin, ctx, store) {
                     pin.state == 0 ? "Off" : "On",
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(
-                        color: store.highContrast == false
-                            ? Colors.black
-                            : Colors.black87,
-                        fontSize: store.fontSizeSelect <= 1
-                            ? 16
-                            : 16 + 2.0 * store.fontSizeSelect),
+                      color: store.highContrast == false
+                          ? Colors.black
+                          : Colors.black87,
+                      fontSize: 16 + 2.0 * store.fontSizeSelect,
+                    ),
                   ),
                 )
               ],

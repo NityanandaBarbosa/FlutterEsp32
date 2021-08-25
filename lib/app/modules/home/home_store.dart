@@ -28,7 +28,7 @@ abstract class HomeStoreBase with Store {
   List<Pin> espPinList;
 
   @observable
-  double fontSizeSelect = 1.0;
+  double fontSizeSelect = 0.0;
 
   @observable
   bool highContrast = false;

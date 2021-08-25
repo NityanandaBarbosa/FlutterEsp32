@@ -88,9 +88,6 @@ class _HomePageState extends ModularState<HomePage, HomeStore> {
             },
             child: Icon(
               Icons.refresh,
-              size: store.fontSizeSelect <= 1
-                  ? 25
-                  : 25 + 2.0 * store.fontSizeSelect,
               color:
                   store.highContrast == false ? Colors.white : Colors.black87,
             ),

@@ -18,6 +18,15 @@ class _FontSliderState extends State<FontSlider> {
     return Observer(
       builder: (_) => Scaffold(
         appBar: AppBar(
+          leading: IconButton(
+            icon: Icon(
+              Icons.arrow_back,
+              color: _homeStore.highContrast == false
+                  ? Colors.white
+                  : Color(0xFFFFFF00),
+            ),
+            onPressed: () => Modular.to.pop(),
+          ),
           backgroundColor: _homeStore.highContrast == false
               ? Colors.blue
               : Color(0xFF333333),
