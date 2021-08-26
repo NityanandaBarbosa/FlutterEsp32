@@ -79,7 +79,7 @@ class _FontSliderState extends State<FontSlider> {
                                 trackHeight: 2,
                                 overlayColor: _homeStore.highContrast == false
                                     ? Colors.blue.withOpacity(.1)
-                                    : Color(0xFFFFFF00).withOpacity(.1),
+                                    : Colors.white.withOpacity(.1),
                                 thumbColor: _homeStore.highContrast == false
                                     ? Colors.blue
                                     : Color(0xFFFFFF00),
