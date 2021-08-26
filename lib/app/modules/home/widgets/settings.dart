@@ -28,14 +28,19 @@ Widget settings(store, ctx) {
                         child: new Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
-                            Text(
-                              'Settings',
-                              style: new TextStyle(
-                                  fontSize: 30 + 2.0 * store.fontSizeSelect,
-                                  fontWeight: FontWeight.bold,
-                                  color: store.highContrast == false
-                                      ? Colors.black
-                                      : Color(0xFFFFFFFF)),
+                            Semantics(
+                              label: "Settings Page",
+                              focused: true,
+                              excludeSemantics: true,
+                              child: Text(
+                                'Settings',
+                                style: new TextStyle(
+                                    fontSize: 30 + 2.0 * store.fontSizeSelect,
+                                    fontWeight: FontWeight.bold,
+                                    color: store.highContrast == false
+                                        ? Colors.black
+                                        : Color(0xFFFFFFFF)),
+                              ),
                             ),
                           ],
                         )),
@@ -93,7 +98,6 @@ Widget settings(store, ctx) {
                       ),
                     ),
                     ListTile(
-                      //onTap: linkendlin,
                       leading: Icon(Icons.brightness_6_outlined,
                           size: 25,
                           color: store.highContrast == false
@@ -114,7 +118,6 @@ Widget settings(store, ctx) {
                         activeColor: store.highContrast == false
                             ? Colors.blue
                             : Color(0xFFFFFF00),
-                        //activeTrackColor: Color(0xFFFFFF00),
                       ),
                     ),
                     ListTile(
@@ -137,41 +140,6 @@ Widget settings(store, ctx) {
                           color: store.highContrast == false
                               ? Colors.black
                               : Color(0xFFFFFF00)),
-                      // Padding(
-                      //   padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
-                      //   child: SizedBox(
-                      //     width: store.fontSizeSelect <= 1
-                      //         ? 100
-                      //         : 100 + 2.0 * store.fontSizeSelect,
-                      //     child: Slider(
-                      //       value: store.fontSizeSelect,
-                      //       min: 1,
-                      //       max: 5,
-                      //       divisions: 5,
-                      //       //label: "${store.fontSizeSelect}",
-                      //       activeColor: store.highContrast == false
-                      //           ? Colors.blue
-                      //           : Color(0xFFFFFF00),
-                      //       onChanged: (value) =>
-                      //           store.setFontSizeSelect(value),
-                      //     ),
-                      //   ),
-                      // )
-                      // Wrap(
-                      //   children: [
-                      //     IconButton(
-                      //         icon: Icon(Icons.plus_one),
-                      //         onPressed: () => store
-                      //             .setFontSizeSelect(store.fontSizeSelect - 1)),
-                      //     IconButton(
-                      //         icon: Icon(Icons.plus_one),
-                      //         onPressed: () => {
-                      //               store.setFontSizeSelect(
-                      //                   store.fontSizeSelect + 1),
-                      //               print("AQUIUIII ${store.fontSizeSelect}")
-                      //             }),
-                      //   ],
-                      // ),
                     ),
                     ListTile(
                       onTap: () async {

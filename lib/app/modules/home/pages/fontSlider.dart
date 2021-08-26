@@ -18,23 +18,30 @@ class _FontSliderState extends State<FontSlider> {
     return Observer(
       builder: (_) => Scaffold(
         appBar: AppBar(
-          leading: IconButton(
-            icon: Icon(
-              Icons.arrow_back,
-              color: _homeStore.highContrast == false
-                  ? Colors.white
-                  : Color(0xFFFFFF00),
-            ),
-            onPressed: () => Modular.to.pop(),
+          leading: Semantics(
+            label: "Back to Settings",
+            focused: false,
+            button: true,
+            onTap: () => Modular.to.pop(),
+            excludeSemantics: true,
+            child: Icon(
+                Icons.arrow_back,
+                color: _homeStore.highContrast == false
+                    ? Colors.white
+                    : Color(0xFFFFFF00),
+              ),
           ),
           backgroundColor: _homeStore.highContrast == false
               ? Colors.blue
               : Color(0xFF333333),
-          title: Text(
-            'Font Slider',
-            style: TextStyle(
-              fontSize: 20 + 2.0 * _homeStore.fontSizeSelect,
-              color: Colors.white,
+          title: Semantics(
+            focused: true,
+            child: Text(
+              'Font Slider',
+              style: TextStyle(
+                fontSize: 20 + 2.0 * _homeStore.fontSizeSelect,
+                color: Colors.white,
+              ),
             ),
           ),
         ),
@@ -88,13 +95,15 @@ class _FontSliderState extends State<FontSlider> {
                                 activeTickMarkColor: Colors.grey,
                                 inactiveTickMarkColor: Colors.grey,
                               ),
-                              child: Slider(
-                                value: _homeStore.fontSizeSelect,
-                                min: -3,
-                                max: 3,
-                                divisions: 6,
-                                onChanged: (value) =>
-                                    _homeStore.setFontSizeSelect(value),
+                              child: Semantics(
+                                child: Slider(
+                                  value: _homeStore.fontSizeSelect,
+                                  min: -3,
+                                  max: 3,
+                                  divisions: 6,
+                                  onChanged: (value) =>
+                                      _homeStore.setFontSizeSelect(value),
+                                ),
                               ),
                             ),
                           ),

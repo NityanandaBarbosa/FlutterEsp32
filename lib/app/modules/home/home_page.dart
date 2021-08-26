@@ -80,16 +80,24 @@ class _HomePageState extends ModularState<HomePage, HomeStore> {
                 : settings(store, context)),
           ),
           bottomNavigationBar: btnNavigator(store),
-          floatingActionButton: FloatingActionButton(
-            backgroundColor:
-                store.highContrast == false ? Colors.blue : Color(0xFFFFFF00),
-            onPressed: () async {
+          floatingActionButton: Semantics(
+            label: "Refresh",
+            button: true,
+            excludeSemantics: true,
+            onTap:() async {
               await store.tryToConnect();
             },
-            child: Icon(
-              Icons.refresh,
-              color:
-                  store.highContrast == false ? Colors.white : Colors.black87,
+            child: FloatingActionButton(
+              backgroundColor:
+                  store.highContrast == false ? Colors.blue : Color(0xFFFFFF00),
+              onPressed: () async {
+                await store.tryToConnect();
+              },
+              child: Icon(
+                Icons.refresh,
+                color:
+                    store.highContrast == false ? Colors.white : Colors.black87,
+              ),
             ),
           ),
         );
