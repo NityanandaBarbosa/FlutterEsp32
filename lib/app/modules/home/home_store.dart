@@ -33,6 +33,8 @@ abstract class HomeStoreBase with Store {
   @observable
   bool highContrast = false;
 
+  //MediaQuery.of(context).accessibleNavigation
+
   @action
   setEspReturn(List<Pin> value) => espPinList = value;
 

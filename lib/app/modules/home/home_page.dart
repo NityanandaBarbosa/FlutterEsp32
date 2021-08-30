@@ -63,9 +63,7 @@ class _HomePageState extends ModularState<HomePage, HomeStore> {
                 child: Text(
               'Flutter ESP32',
               style: TextStyle(
-                  fontSize: store.fontSizeSelect <= 1
-                      ? 23
-                      : 23 + 2.0 * store.fontSizeSelect,
+                  fontSize: 23 + 2.0 * store.fontSizeSelect,
                   color: Color(0xFFFFFFFF)),
             )),
           ),
@@ -95,6 +93,7 @@ class _HomePageState extends ModularState<HomePage, HomeStore> {
               },
               child: Icon(
                 Icons.refresh,
+                semanticLabel: "Refresh",
                 color:
                     store.highContrast == false ? Colors.white : Colors.black87,
               ),

@@ -7,7 +7,6 @@ Widget pinButton(Pin pin, ctx, store) {
     excludeSemantics: true,
     button: true,
     onTap: () {
-      //"Double tap to activated";
       store.tapButton(pin);
     },
     child: Padding(

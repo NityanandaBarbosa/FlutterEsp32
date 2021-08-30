@@ -80,6 +80,7 @@ Widget settings(store, ctx) {
                       ),
                       title: Text(
                         "Version",
+                        semanticsLabel: "Version",
                         style: TextStyle(
                           fontSize: 15 + 2.0 * store.fontSizeSelect,
                           color: store.highContrast == false
@@ -89,6 +90,7 @@ Widget settings(store, ctx) {
                       ),
                       trailing: Text(
                         "1.0.0",
+                        semanticsLabel: "1.0.0",
                         style: TextStyle(
                           fontSize: 15 + 2.0 * store.fontSizeSelect,
                           color: store.highContrast == false
@@ -97,27 +99,34 @@ Widget settings(store, ctx) {
                         ),
                       ),
                     ),
-                    ListTile(
-                      leading: Icon(Icons.brightness_6_outlined,
-                          size: 25,
-                          color: store.highContrast == false
-                              ? Colors.black
-                              : Colors.white),
-                      title: Text(
-                        "High Contrast",
-                        style: TextStyle(
-                          fontSize: 15 + 2.0 * store.fontSizeSelect,
-                          color: store.highContrast == false
-                              ? Colors.black
-                              : Colors.white,
+                    Semantics(
+                      label: "High Contrast is ${store.highContrast ? "activated" : "disabled"}",
+                      excludeSemantics: true,
+                      toggled: store.highContrast,
+                      onTap: () => store.setHighContrast(!store.highContrast),
+                      child: ListTile(
+                        leading: Icon(Icons.brightness_6_outlined,
+                            size: 25,
+                            color: store.highContrast == false
+                                ? Colors.black
+                                : Colors.white),
+                        title: Text(
+                          "High Contrast",
+                          semanticsLabel: "High Contrast",
+                          style: TextStyle(
+                            fontSize: 15 + 2.0 * store.fontSizeSelect,
+                            color: store.highContrast == false
+                                ? Colors.black
+                                : Colors.white,
+                          ),
                         ),
-                      ),
-                      trailing: Switch(
-                        value: store.highContrast,
-                        onChanged: store.setHighContrast,
-                        activeColor: store.highContrast == false
-                            ? Colors.blue
-                            : Color(0xFFFFFF00),
+                        trailing: Switch(
+                          value: store.highContrast,
+                          onChanged: store.setHighContrast,
+                          activeColor: store.highContrast == false
+                              ? Colors.blue
+                              : Color(0xFFFFFF00),
+                        ),
                       ),
                     ),
                     ListTile(
@@ -129,6 +138,7 @@ Widget settings(store, ctx) {
                               : Color(0xFFFFFF00)),
                       title: Text(
                         "Font Slider",
+                        semanticsLabel: "Font Slider",
                         style: TextStyle(
                             fontSize: 15 + 2.0 * store.fontSizeSelect,
                             color: store.highContrast == false
@@ -154,6 +164,7 @@ Widget settings(store, ctx) {
                       ),
                       title: Text(
                         "GitHub",
+                        semanticsLabel: "GitHub",
                         style: TextStyle(
                           fontSize: 15 + 2.0 * store.fontSizeSelect,
                           color: store.highContrast == false
@@ -181,6 +192,7 @@ Widget settings(store, ctx) {
                       ),
                       title: Text(
                         "LinkedIn",
+                        semanticsLabel: "LinkedIn",
                         style: TextStyle(
                           fontSize: 15 + 2.0 * store.fontSizeSelect,
                           color: store.highContrast == false
