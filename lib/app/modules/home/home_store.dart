@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:dartz/dartz.dart';
 import 'package:flutter_esp32/app/modules/home/repository/i_esp32_repository.dart';
 import 'package:flutter_modular/flutter_modular.dart';
@@ -22,7 +20,7 @@ abstract class HomeStoreBase with Store {
   int bottomNavIndex = 0;
 
   @observable
-  bool connected = false;
+  bool connected;
 
   @observable
   List<Pin> espPinList;

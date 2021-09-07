@@ -73,8 +73,8 @@ class _FontSliderState extends State<FontSlider> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          MediaQuery.of(context).accessibleNavigation
-                              ? Container(
+                          MediaQuery.of(context).accessibleNavigation ?
+                              Container(
                                   width:
                                       MediaQuery.of(context).size.width * 0.1,
                                   height:
@@ -100,15 +100,11 @@ class _FontSliderState extends State<FontSlider> {
                                           "A",
                                           semanticsLabel: "Decrease font size",
                                           style: TextStyle(
-                                              color: _homeStore.highContrast ==
-                                                      false
+                                              color: _homeStore.highContrast == false
                                                   ? Colors.white
-                                                  : Colors.black
-                                                          .withOpacity(0.75),
-                                              fontSize: 15 +
-                                                  2.0 *
-                                                      _homeStore
-                                                          .fontSizeSelect),
+                                                  : Colors.black.withOpacity(0.75),
+                                              fontSize: 15
+                                            ),
                                         )),
                                 )
                               : Padding(
@@ -117,9 +113,11 @@ class _FontSliderState extends State<FontSlider> {
                                   child: Text(
                                     "A",
                                     style: TextStyle(
-                                      fontSize: 15,
-                                      color: Colors.white,
-                                    ),
+                                              color: _homeStore.highContrast == true
+                                                  ? Colors.white
+                                                  : Colors.black.withOpacity(0.75),
+                                              fontSize: 15
+                                            ),
                                   ),
                                 ),
                           Container(
@@ -152,8 +150,8 @@ class _FontSliderState extends State<FontSlider> {
                               ),
                             ),
                           ),
-                          MediaQuery.of(context).accessibleNavigation
-                              ? Container(
+                          MediaQuery.of(context).accessibleNavigation ?
+                            Container(
                             width:
                             MediaQuery.of(context).size.width * 0.1,
                             height:
@@ -179,15 +177,11 @@ class _FontSliderState extends State<FontSlider> {
                                   "A",
                                   semanticsLabel: "Increase font size",
                                   style: TextStyle(
-                                      color: _homeStore.highContrast ==
-                                          false
-                                          ? Colors.white
-                                          : Colors.black
-                                          .withOpacity(0.75),
-                                      fontSize: 20 +
-                                          2.0 *
-                                              _homeStore
-                                                  .fontSizeSelect),
+                                              color: _homeStore.highContrast == false
+                                                  ? Colors.white
+                                                  : Colors.black.withOpacity(0.75),
+                                              fontSize: 20
+                                            ),
                                 )),
                           )
                               : Padding(
@@ -196,9 +190,11 @@ class _FontSliderState extends State<FontSlider> {
                                   child: Text(
                                     "A",
                                     style: TextStyle(
-                                      fontSize: 20,
-                                      color: Colors.white,
-                                    ),
+                                              color: _homeStore.highContrast == true
+                                                  ? Colors.white
+                                                  : Colors.black.withOpacity(0.75),
+                                              fontSize: 20
+                                            ),
                                   ),
                                 ),
                         ],

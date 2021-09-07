@@ -68,8 +68,7 @@ class Esp32Repository implements IEsp32Repository {
     List<String> listPin = data.split(",");
     for (var i in listPin) {
       var pinSplit = i.split(":");
-      Pin objPin =
-          new Pin(door: int.parse(pinSplit[0]), state: int.parse(pinSplit[1]));
+      Pin objPin = new Pin(door: int.parse(pinSplit[0]), state: int.parse(pinSplit[1]));
       listOfPins.add(objPin);
     }
     return listOfPins;
